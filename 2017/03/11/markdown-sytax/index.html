@@ -1,0 +1,84 @@
+<!DOCTYPE html><html lang="zh-cn"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"><meta name="format-detection" content="telephone=no"><meta name="format-detection" content="email=no"><meta name="description"><meta name="keywords" content="Hexo, 前端, 技术, JavaScript, Nodejs,  Vuejs"><title>markdown-sytax - Hexo</title><link rel="stylesheet" href="/css/main_style.min.css"><link rel="icon" href="/favicon.ico"></head><body><div class="post-header"><img class="background" src="http://callfiles.ueibo.com/hexo-theme-laughing/post_background.jpg"><div class="post-title"><h1 class="title">markdown-sytax</h1><ul class="meta"><li><i class="icon icon-author"></i>白霁</li><li><i class="icon icon-clock"></i>10 Minutes</li><li><i class="icon icon-calendar"></i>March 11, 2017</li></ul></div></div><div class="article-content" style="max-width:600px"><h1 id="Markdown"><a href="#Markdown" class="headerlink" title="Markdown"></a>Markdown</h1><blockquote>
+<p>优秀作品的秘籍就是：非常严格的品味，再加上实现这种品味的能力。<br>                                                     ———《黑客与画家》</p>
+</blockquote>
+<h2 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h2><ul>
+<li>纯文本，所以兼容性极强，可以用所有文本编辑器打开。</li>
+<li>让你专注文字而不是排版。</li>
+<li>格式转换方便，Markdown的文本你可以轻松转换为html、pdf等格式。</li>
+<li><p>Markdown的标记语法有极好的可读性。</p>
+<p>笔者目前只有对二三点有一丢丢的感觉<br><a href="http://www.jianshu.com/p/q81RER" target="_blank" rel="external">优点转载</a></p>
+</li>
+</ul>
+<h2 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h2><blockquote>
+<p>勤奋的男人运气都不会太差！ </p>
+</blockquote>
+<h3 id="标题"><a href="#标题" class="headerlink" title="标题"></a>标题</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">最高阶标题(h1)</div><div class="line">===========</div><div class="line">第二阶标题(h2)</div><div class="line">----------</div><div class="line"> # 一级标题</div><div class="line"> ## 二级标题</div><div class="line"> ....</div><div class="line"> ###### 六级标题</div></pre></td></tr></table></figure>
+<p><strong>注：</strong> <code>#</code>和文本之间建议留出一个空格。</p>
+<p><strong>演示：</strong></p>
+<h1 id="最高阶标题（自己找像谁）"><a href="#最高阶标题（自己找像谁）" class="headerlink" title="最高阶标题（自己找像谁）"></a>最高阶标题（自己找像谁）</h1><h2 id="第二阶标题-（自己找像谁）"><a href="#第二阶标题-（自己找像谁）" class="headerlink" title="第二阶标题 （自己找像谁）"></a>第二阶标题 （自己找像谁）</h2><h1 id="H1"><a href="#H1" class="headerlink" title="H1"></a>H1</h1><h2 id="H2"><a href="#H2" class="headerlink" title="H2"></a>H2</h2><h3 id="H3"><a href="#H3" class="headerlink" title="H3"></a>H3</h3><p>….</p>
+<h6 id="H6"><a href="#H6" class="headerlink" title="H6"></a>H6</h6><h3 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">+ 第一钟</div><div class="line">- 第二种</div><div class="line">* 第三种</div><div class="line">1. 第四种</div></pre></td></tr></table></figure>
+<p><strong>注：</strong> <code>符号</code>与文本之间要留出一个空格。（<em>ps：</em>这里没有建议噢）</p>
+<p><strong>演示</strong></p>
+<ol>
+<li>第一种<ul>
+<li>好多</li>
+<li>好多</li>
+<li>好多</li>
+</ul>
+</li>
+<li>第二种<ul>
+<li>好多</li>
+<li>好多</li>
+<li>好多</li>
+</ul>
+</li>
+<li>第三种<ul>
+<li>好多</li>
+<li>好多</li>
+<li>好多</li>
+</ul>
+</li>
+</ol>
+<h3 id="超链接"><a href="#超链接" class="headerlink" title="超链接"></a>超链接</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">[文本](URL &quot;title&quot;)     //（行内式）</div><div class="line">[文本][idName]          //（参考式）要配合下面一种使用</div><div class="line">[idName]: url &quot;title&quot;  //（可在文档的任意位置）</div><div class="line">[idName]: url &apos;title&apos;  //（可在文档的任意位置）</div><div class="line">[idName]: url (title)  //（可在文档的任意位置）</div></pre></td></tr></table></figure>
+<p><strong>演示：</strong></p>
+<p><a href="https://github.com/baixiaoji" title="我的GitHub" target="_blank" rel="external">白小霁</a></p>
+<p><a href="https://github.com/baixiaoji" title="Click Title Here" target="_blank" rel="external">This my GitHub link </a> 这种写法好像有正交原则，让其分离开来（<em>ps：</em>需源码）</p>
+<h3 id="图片"><a href="#图片" class="headerlink" title="图片"></a>图片</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">![Alt text](URL &quot;title&quot;)</div><div class="line">&lt;img src=&quot;url&quot; width height&gt; //可以更改大小</div></pre></td></tr></table></figure>
+<p><strong>演示：</strong><br><img src="leanote://file/getImage?fileId=57c45977ac16ec0992000002" alt="路飞" title="海贼王"><br><img src="leanote://file/getImage?fileId=57c45977ac16ec0992000002" width="200" height="150"><br><img src="http://p3.gexing.com/G1/M00/20/70/rBACFFN9yyGDSh-yAAB9bJnu0_E472.jpg" alt="路飞" title="海贼王"></p>
+<p><strong>注：</strong> Markdown中的图片还可以设置高宽，目前只在<code>leanote</code>上测试过。</p>
+<h3 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&gt; 文本内容</div></pre></td></tr></table></figure>
+<p><strong>演示：</strong></p>
+<blockquote>
+<p>你要保守你心,胜过保守一切,因为一生的果效,是由心发出。 「箴言4:23」</p>
+</blockquote>
+<p><strong>注：</strong> <code>&gt;</code>与文本之间要留出一个空格,本人不喜欢Mahua上的引用格式，偏好<a href="https://leanote.com/" title="Click Title Here" target="_blank" rel="external"><strong>Leanote</strong></a>上的引用格式。</p>
+<p>###分割线<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">***</div><div class="line">---</div></pre></td></tr></table></figure></p>
+<p><strong>演示：</strong></p>
+<hr>
+<hr>
+<hr>
+<p><strong>注：</strong> 要有<strong>三个以上</strong>的<code>符号</code>组成的,中间可以有空格。</p>
+<p>###代码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">\```代码类型</div><div class="line">   代码</div><div class="line">``\`</div></pre></td></tr></table></figure></p>
+<p><strong>演示：</strong><br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">!DOCTYPY</span> <span class="attr">HTML</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">title</span>&gt;</span>多实践，多看书<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">        戒骄戒躁,不懂先思考，再google，再咨询前辈</div><div class="line">    <span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<h3 id="强调"><a href="#强调" class="headerlink" title="强调"></a>强调</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">**文本**  //加粗</div><div class="line">*文本*   //斜体</div></pre></td></tr></table></figure>
+<p><strong>演示：</strong><br><strong>文本</strong>    <em>文本</em>   </p>
+<h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><h4 id="反斜杠"><a href="#反斜杠" class="headerlink" title="反斜杠"></a>反斜杠</h4><p>Markdown 可以利用反斜杠来插入一些在语法中有其它意义的符号，例如：如果你想要用星号加在文字旁边的方式来做出强调效果（但不用 <code>&lt;em&gt;</code> 标签），你可以在星号的前面加上反斜杠：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">\*literal asterisks\*</div></pre></td></tr></table></figure>
+<p>Markdown 支持以下这些符号前面加上反斜杠来帮助插入普通的符号：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">\   反斜线</div><div class="line">`   反引号</div><div class="line">*   星号</div><div class="line">_   底线</div><div class="line">&#123;&#125;  花括号</div><div class="line">[]  方括号</div><div class="line">()  括弧</div><div class="line">#   井字号</div><div class="line">+   加号</div><div class="line">-   减号</div><div class="line">.   英文句点</div><div class="line">!   惊叹号</div></pre></td></tr></table></figure></p>
+<p>###<code>个人见解:</code></p>
+<p>#####Q： 为什么能轻松转化为HTML格式？<br><strong>A：有很多是HTML标签用特定的符号来简化表示，但Markdown在解读的时候会补充完全代码格式，仿佛像<a href="https://zh.wikipedia.org/wiki/%E8%AF%AD%E6%B3%95%E7%B3%96" title="点击我" target="_blank" rel="external">语法糖</a></strong></p>
+<p>#####Q： 为什么可以专注文字而不是排版？<br><strong>A：最近，患上浏览页面时会用余光去瞟滚动条的习惯。当然现在的网页越来越炫酷了，从网页中摄取有用的知识，受干扰的因素也增多了不少。Markdown没有word那样需要之后更改很多的样式，在编写的时候就能设置好了。甚至希望没有计算机二级，就因为他让我裸考差两分。</strong></p>
+<p>###参考文献<br><a href="http://www.jianshu.com/p/q81RER" target="_blank" rel="external">简书</a></p>
+<p><a href="http://wowubuntu.com/markdown/" target="_blank" rel="external">Markdown语法（中文版）</a></p>
+<p><a href="http://daringfireball.net/projects/markdown/syntax" target="_blank" rel="external">Markdown: Syntax（英文版）</a><strong>强烈推荐</strong></p>
+<p><strong>本文章著作权归白小霁所有，转载须说明来源</strong></p>
+</div><div class="article-meta" style="max-width:600px"><div class="categories"><i class="icon icon-category"></i><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/技术/">技术</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/技术/指南/">指南</a><span class="category-list-count">2</span></li></ul></li></ul></div></div><div class="article-comment" style="max-width:600px"><div class="ds-thread" id="ds-thread" data-thread-key="cj04mkkhx000334rhudfcbwje" data-title="markdown-sytax" data-url="http://yoursite.com/2017/03/11/markdown-sytax/" site-name="ueibo"></div><script>var siteName = document.getElementById('ds-thread').getAttribute('site-name');
+var duoshuoQuery = {short_name: siteName};
+(function() {
+  var ds = document.createElement('script');
+  ds.type = 'text/javascript';ds.async = true;
+  ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+  ds.charset = 'UTF-8';
+  (document.getElementsByTagName('head')[0] 
+  || document.getElementsByTagName('body')[0]).appendChild(ds);
+})();</script></div><ul class="navication"><li class="home"><a href="/"><i class="icon icon-home"></i></a></li><li><a href="/2017/03/11/这是一个船票的故事/"><i class="icon icon-arror-right"></i></a></li></ul><div class="page-footer"><div class="top"><ul class="social"><li><a href="https://github.com/baixiaoji" title="GitHub" target="_blank"><i class="icon icon-github"></i></a></li></ul></div><div class="bottom"><p class="copyright">© 2017 Hexo<br><small>POWER BY <a href="https://hexo.io" target="_blank">HEXO</a></small></p></div></div></body></html>
