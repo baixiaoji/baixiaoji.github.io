@@ -1,0 +1,51 @@
+<!DOCTYPE html><html lang="zh-cn"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"><meta name="format-detection" content="telephone=no"><meta name="format-detection" content="email=no"><meta name="description"><meta name="keywords" content="Hexo, 前端, 技术, JavaScript, Nodejs,  Vuejs"><title>学习vim之路 - 石沉大海 - baixiaoji的个人博客</title><link rel="stylesheet" href="/css/main_style.min.css"><link rel="icon" href="/favicon.ico"></head><body><div class="post-header"><img class="background" src="http://callfiles.ueibo.com/hexo-theme-laughing/post_background.jpg"><div class="post-title"><h1 class="title">学习vim之路</h1><ul class="meta"><li><i class="icon icon-author"></i>白小霁</li><li><i class="icon icon-clock"></i>1 Minutes</li><li><i class="icon icon-calendar"></i>March 13, 2017</li></ul></div></div><div class="article-content" style="max-width:600px"><blockquote>
+<p>创建时间：2017/3/13<br>上次修改：2017/3/13</p>
+</blockquote>
+<p>最近学习没有什么动力，于是开始决定学习<code>vim</code>的使用，主要的参考材料是如下：</p>
+<ol>
+<li><a href="https://upclinux.github.io/intro/07/vim-and-emacs/" target="_blank" rel="external">VIM的历史介绍</a></li>
+<li><a href="http://coolshell.cn/articles/5426.html" target="_blank" rel="external">COOLSHELL简明VIM练级攻略</a></li>
+<li><a href="https://vim-adventures.com/" target="_blank" rel="external">寓教于乐-vim的游戏</a></li>
+</ol>
+<p>因为看到酷壳的文章划分的很有意思，所以想以升级的方式去写。</p>
+<hr>
+<p>首先，<a href="http://www.vim.org/" target="_blank" rel="external">vim</a>的一款非常难学的编辑器，却是不可思议的好用，当然也是提高逼格的一个好方法。</p>
+<p>在开始学习以前，我需要给你一些警告（自勉）：</p>
+<blockquote>
+<ul>
+<li>学习vim在开始时是痛苦的。</li>
+<li>需要时间</li>
+<li>需要不断地练习，就像你学习一个乐器一样。</li>
+<li>不要期望你能在3天内把vim练得比别的编辑器更有效率。</li>
+<li>事实上，你需要2周时间的苦练，而不是3天。</li>
+</ul>
+</blockquote>
+<h2 id="方舟-——-活下来"><a href="#方舟-——-活下来" class="headerlink" title="方舟 —— 活下来"></a>方舟 —— 活下来</h2><p>现在，确保你的系统下面是有<code>vim</code>的，紧接下来就是想怎么在这个黑框中活下来。</p>
+<ul>
+<li>启动Vim后，vim在Normal模式下。</li>
+<li>如果想进入Insert模式（输入模式），请按下<code>i</code>键</li>
+<li>这时候，你就可以像记事本一样的编辑</li>
+<li>如果你想要回退到Normal模式，请按ESC<br>这样下来，你就知道了如何在<code>Normal</code>和<code>Insert</code>模式的切换，但是想要存活下来还是要明白一些基本的操作。</li>
+</ul>
+<blockquote>
+<ul>
+<li><code>i</code>  👉  切换到<code>Insert</code>模式，按<code>ESC</code>回到<code>Normal</code>模式</li>
+<li><code>x</code>  👉  删除当前光标所在的一个字符，其内容存在剪贴板里</li>
+<li><code>:wq</code>  👉  写入（存档）+ 退出 (<code>:w</code> 写入 <code>:q</code> 退出)</li>
+<li><code>dd</code>  👉 删除当前行的所有字符，其内容存在剪贴板里</li>
+<li><code>p</code> 👉 粘贴剪切板</li>
+<li><code>hjkl</code> 光标的移动键（👈👇☝👉）</li>
+<li><code>:help &lt;command&gt;</code>  👉 显示相关的命令帮助（退出帮助请输入<code>:q</code>）  </li>
+</ul>
+</blockquote>
+<p>如果，能掌握上述的命令，就可以编辑文本了，像自勉中说的一样，需要练就能为下意识的状态，就能进入下一阶段了。</p>
+</div><div class="article-meta" style="max-width:600px"><div class="tags"><i class="icon icon-tag"></i><ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vim/">Vim</a><span class="tag-list-count">1</span></li></ul></div><div class="categories"><i class="icon icon-category"></i><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/技术/">技术</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/技术/学习/">学习</a><span class="category-list-count">1</span></li></ul></li></ul></div></div><div class="article-comment" style="max-width:600px"><div class="ds-thread" id="ds-thread" data-thread-key="cj07f9rtq00006grhi08e9rga" data-title="学习vim之路" data-url="http://yoursite.com/2017/03/13/学习vim之路/" site-name="ueibo"></div><script>var siteName = document.getElementById('ds-thread').getAttribute('site-name');
+var duoshuoQuery = {short_name: siteName};
+(function() {
+  var ds = document.createElement('script');
+  ds.type = 'text/javascript';ds.async = true;
+  ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+  ds.charset = 'UTF-8';
+  (document.getElementsByTagName('head')[0] 
+  || document.getElementsByTagName('body')[0]).appendChild(ds);
+})();</script></div><ul class="navication"><li class="home"><a href="/"><i class="icon icon-home"></i></a></li><li><a href="/2017/03/11/markdown-syntax/"><i class="icon icon-arror-right"></i></a></li></ul><div class="page-footer"><div class="top"><ul class="social"><li><a href="https://github.com/baixiaoji" title="GitHub" target="_blank"><i class="icon icon-github"></i></a></li></ul></div><div class="bottom"><p class="copyright">© 2017 石沉大海 - baixiaoji的个人博客<br><small>POWER BY <a href="https://hexo.io" target="_blank">HEXO</a></small></p></div></div></body></html>
