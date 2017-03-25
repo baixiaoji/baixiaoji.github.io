@@ -1,0 +1,47 @@
+<!DOCTYPE html><html lang="zh-cn"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"><meta name="format-detection" content="telephone=no"><meta name="format-detection" content="email=no"><meta name="description"><meta name="keywords" content="Hexo, 前端, 技术, JavaScript, Nodejs,  Vuejs"><title>浅析浏览器输入URL到页面展现 - 石沉大海 - baixiaoji的个人博客</title><link rel="stylesheet" href="/css/main_style.min.css"><link rel="icon" href="/favicon.ico"></head><body><input id="navi" type="checkbox"><ul class="main-navication"><li><a href="/"><span>Home</span></a></li><li><a href="https://github.com/baixiaoji"><span>Github</span></a></li><li><a href="/about/"><span>about</span></a></li></ul><div class="wrapper" id="wrap"><div class="post-header"><label class="navi-button light" for="navi">MENU</label><img class="background" src="http://callfiles.ueibo.com/hexo-theme-laughing/post_background.jpg"><div class="post-title"><h1 class="title">浅析浏览器输入URL到页面展现</h1><ul class="meta"><li><i class="icon icon-author"></i>白小霁</li><li><i class="icon icon-clock"></i>3 Minutes</li><li><i class="icon icon-calendar"></i>March 25, 2017</li></ul></div></div><div class="article-content" style="max-width:800px"><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>我们每天都在浏览器中输入URL，再到页面呈现也就几秒的时间。看似一个随意的举动，但是作为一个前端工程师，便要知道短短的这段时间里发生了什么？</p>
+<h2 id="主要概念"><a href="#主要概念" class="headerlink" title="主要概念"></a>主要概念</h2><p>URL(uniform resource location)统一资源定位符: 俗称网页地址，是因特网上标准的资源地址（Address）。<br>在一个简单的地址中包括一下部分，如图：<br><img src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1490428058943&amp;di=1c647a30ce2333979819882acdaf4620&amp;imgtype=0&amp;src=http%3A%2F%2Fblog.leapoahead.com%2F2015%2F08%2F30%2Fwhat-happens-when-you-open-a-webpage%2Furl.png" alt=""></p>
+<p>IP(Internet Protocol):网络之间互联的协议。链接互联网的每一台设备都有且只有一个IP地址，用来标识自己。有不同的类型，感兴趣自己去查阅。</p>
+<p>域名(Domain Name): IP协议规定使用数字来标记一个地址，但日常生活中人们很难记忆若干地址，所以发明了一些好记的字符来标识设备地址，那就是域名。</p>
+<p>DNS(Domain Name System): 既然有了域名让人类记忆一个地址，但是计算机记录的还是各个设备的IP地址，这样需要一个能够将域名转化为IP地址的相互映射一个分布式数据库，DNS提供的就是这样的服务。</p>
+<p>HTTP(HyberText Transfer Protocol)超文本传输协议:所有的www文件都必须遵守这个标准。</p>
+<h2 id="浅析"><a href="#浅析" class="headerlink" title="浅析"></a>浅析</h2><h3 id="地址解析"><a href="#地址解析" class="headerlink" title="地址解析"></a>地址解析</h3><p>敲下回车之后，浏览器就开始解析域名，为了寻找域名映射的IP地址（<strong>目标： 域名 –&gt; IP地址</strong>），解析的经历这几个阶段：</p>
+<ol>
+<li>查询<strong>浏览器本身DNS缓存</strong>中是否有域名相关的信息</li>
+<li>查询<strong>本机的host文件</strong>中是否有域名相关的信息</li>
+<li>查询<strong>离本地最近的路由器中DNS的缓存</strong>中是否有域名相关的信息</li>
+<li>查询<strong>ISP(互联网服务提供商,例如电信,移动)中的DNS服务器</strong>中是否有目标域名的信息</li>
+<li>查询<strong>根域名服务器</strong>是否有目标域名的信息,如果没有,则传至<strong>子域名服务器</strong>进行查询， 以此递推，直到找到了<strong>IP地址</strong>为止</li>
+</ol>
+<h3 id="发送请求"><a href="#发送请求" class="headerlink" title="发送请求"></a>发送请求</h3><p>找到了IP地址后，开始建立TCP链接（三次握手），与目标服务器建立连接，浏览器（客户端）通过HTTP发送请求到目标服务器。<br><strong>请求报文</strong>：</p>
+<ol>
+<li>报文首部<br> 1.1 请求行 方法、URI、HTTP版本 （GET / HTTP/1.1）<br> 1.2 请求首部字段<br> 1.3 通用首部字段<br> 1.4 其他 cookie之类</li>
+<li>空行</li>
+<li>报文主体</li>
+</ol>
+<h3 id="服务器处理阶段"><a href="#服务器处理阶段" class="headerlink" title="服务器处理阶段"></a>服务器处理阶段</h3><p>假设用户请求的访问的是PHP文件，Web服务器（自身不能处理PHP文件）收到了请求后，将对应的请求的PHP文件交给PHP应用服务器处理，若文件中有对数据库的数据进行处理，PHP服务器会链接数据库，通过SQL语句对数据进行处理，待PHP服务器将最终的数据生成HTML文件交给Web服务器，Web服务器将文件传输给客户端。</p>
+<h3 id="响应阶段"><a href="#响应阶段" class="headerlink" title="响应阶段"></a>响应阶段</h3><p>客户端接收服务器发来的响应结果，解析响应报文。<br><strong>响应报文</strong>：</p>
+<ol>
+<li>报文头部<br> 1.1 状态行  HTTP版本、状态码、状态语句（HTTP1.1 200 ok）<br> 1.2 响应首部字段<br> 1.3 通用首部字段<br> 1.4 实体首部字段<br> 1.5 其他 cookie之类</li>
+<li>空行</li>
+<li>报文主体</li>
+</ol>
+<h3 id="解析、渲染阶段"><a href="#解析、渲染阶段" class="headerlink" title="解析、渲染阶段"></a>解析、渲染阶段</h3><ol>
+<li>浏览器解析HTML文件，顺序自上而下</li>
+<li>HTML解析器将HTML结构构建为DOM树</li>
+<li>CSS解析器将CSS解析为CSSOM树</li>
+<li>DOM树和CSSOM树开始渲染每一个节点的样式，最终将整个渲染树显示在浏览器上</li>
+</ol>
+<p>注：如果解析过程中遇见<code>&lt;script&gt;</code>标签，会去下载JS文件并执行它，解析器也会停止对HTML的解析，这就是<strong>白屏</strong>、<strong>闪屏</strong>现象产生的原因，所以会建议将<code>&lt;script&gt;</code>写在文档的最后</p>
+</div><div class="article-meta" style="max-width:800px"><div class="tags"><i class="icon icon-tag"></i><ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端/">前端</a><span class="tag-list-count">1</span></li></ul></div><div class="categories"><i class="icon icon-category"></i><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/技术/">技术</a><span class="category-list-count">6</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/技术/总结/">总结</a><span class="category-list-count">3</span></li></ul></li></ul></div></div><div class="article-comment" style="max-width:800px"><div class="ds-thread" id="ds-thread" data-thread-key="cj0ouir2q000f6crhsdn4rbuk" data-title="浅析浏览器输入URL到页面展现" data-url="http://yoursite.com/2017/03/25/浅析浏览器输入URL到页面展现/" site-name="ueibo"></div><script>var siteName = document.getElementById('ds-thread').getAttribute('site-name');
+var duoshuoQuery = {short_name: siteName};
+(function() {
+  var ds = document.createElement('script');
+  ds.type = 'text/javascript';ds.async = true;
+  ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+  ds.charset = 'UTF-8';
+  (document.getElementsByTagName('head')[0] 
+  || document.getElementsByTagName('body')[0]).appendChild(ds);
+})();</script></div><ul class="navication"><li class="home"><a href="/"><i class="icon icon-home"></i></a></li><li><a href="/2017/03/23/关于ajax的那些事/"><i class="icon icon-arror-right"></i></a></li></ul><div class="page-footer"><div class="top"><ul class="social"><li><a href="https://github.com/baixiaoji" title="Github" target="_blank"><i class="icon icon-github"></i></a></li><li><a href="https://www.douban.com/people/baixiaoji/" title="douban" target="_blank"><i class="icon icon-douban"></i></a></li></ul></div><div class="bottom"><p class="copyright">© 2017 石沉大海 - baixiaoji的个人博客<br><small>POWER BY <a href="https://hexo.io" target="_blank">HEXO</a></small></p></div></div></div><script>var wrap = document.getElementById('wrap');
+window.onload = function () {
+  wrap.className += ' done';
+}</script></body></html>
