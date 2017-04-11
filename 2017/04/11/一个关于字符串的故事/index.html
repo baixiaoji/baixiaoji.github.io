@@ -1,0 +1,33 @@
+<!DOCTYPE html><html lang="zh-cn"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"><meta name="format-detection" content="telephone=no"><meta name="format-detection" content="email=no"><meta name="description"><meta name="keywords" content="Hexo, 前端, 技术, JavaScript, Nodejs,  Vuejs"><title>一个关于字符串的故事 - 石沉大海 - baixiaoji的个人博客</title><link rel="stylesheet" href="/css/main_style.min.css"><link rel="icon" href="/favicon.ico"></head><body><input id="navi" type="checkbox"><ul class="main-navication"><li><a href="/"><span>Home</span></a></li><li><a href="https://github.com/baixiaoji"><span>Github</span></a></li><li><a href="/about/"><span>about</span></a></li></ul><div class="wrapper" id="wrap"><div class="post-header"><label class="navi-button light" for="navi">MENU</label><img class="background" src="http://callfiles.ueibo.com/hexo-theme-laughing/post_background.jpg"><div class="post-title"><h1 class="title">一个关于字符串的故事</h1><ul class="meta"><li><i class="icon icon-author"></i>白小霁</li><li><i class="icon icon-clock"></i>2 Minutes</li><li><i class="icon icon-calendar"></i>April 11, 2017</li></ul></div></div><div class="article-content" style="max-width:800px"><h2 id="字符串（补）"><a href="#字符串（补）" class="headerlink" title="字符串（补）"></a>字符串（补）</h2><p>其实，我以前一直都认为语言中「万物皆对象」这一理念，以至于我在「JavaScript」学习中也这样看。<br>回想理念的起点应该是大一的一次讲座，那是一个Java学习的讲座。可当自己学习前端的过程中，对<br>「对象」等概念几乎都没有了。今天，突然悟出来一点道理。就是下面这两句话（仅涉及JavaScript中）。</p>
+<ol>
+<li>只有对象才有属性</li>
+<li>字符串不是对象</li>
+</ol>
+<p>因为身边的好友多少会有一些「JavaScript」的基础，所以在这里我就不解释什么是「对象」或「字符串」。<br>此时，回过来看看这两句话，第一句很好理解，因为我们平时就是这样写的。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2718482-c45b3ede037109f0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"><br>当时第二句话，就一定有问题了。<code>请你回想10秒</code>。你就会发现，我们经常会写<code>&#39;aaa&#39;.length</code>、<code>&#39;aaa&#39;.substring(x,x)</code>….<br>可能你觉得很平常，但是当你看到下面的显示的时候，我反正之前一直纠结的。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2718482-837e610caecf1963.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"><br>当然还有使用构造函数的方法创建字符串对象（请注意我的措词）。当然这样也不能放弃我们来验证字符串不是对象的理由。因为第一句话<br>一定是对的。如果是对象就可以做到设置新属性访问属性，如下图：</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2718482-36264b09cbe78d2a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"><br>那我来试试字符串的，如下图：</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2718482-48a0399639c6754f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"></p>
+<p>发现我们只能设置属性，但是不能访问设置过的属性。可是就有这么一个疑问了，为什么可以设置呢？我们的想法是，浏览器在解析到字符串<br><code>.</code>的时候，默默的给我们创建了一个值与原来的字符串相同的字符串对象（请多看几遍这句话）。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">var a = &apos;baiji&apos;;</div><div class="line">a.name = &apos;xiaoming&apos; // &apos;xiaoming&apos;</div><div class="line">// 伪代码显示</div><div class="line">// temp = new String(&quot;baiji&quot;);</div><div class="line">// a.name ==&gt; temp.name</div></pre></td></tr></table></figure></p>
+<p>但是临时对象(<code>temp</code>)返回结果之后，浏览器销毁了其值，所以当我们访问<code>a.name</code>的时候只会得到<code>undefined</code>。<br>这样一来确实解决了<code>为什么字符串使用方法的时候都要用另一个变量接住</code>，而不是跟数组一样的对象改变其本身。</p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><ol>
+<li>只有对象才有属性</li>
+<li>字符串不是对象</li>
+<li>「万物皆对象」有待商议 </li>
+</ol>
+<p>听说这个是「JavaScript Magic」，我上网找到了<a href="http://www.lai18.com/content/5717855.html?from=cancel" target="_blank" rel="external">一篇类似的解释</a>，如果你有更好的解释或者发现自己发邮件给我。</p>
+<hr>
+<p><strong>本文章著作权归白小霁所有，转载须说明来源</strong></p>
+</div><div class="article-meta" style="max-width:800px"><div class="tags"><i class="icon icon-tag"></i><ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a><span class="tag-list-count">5</span></li></ul></div><div class="categories"><i class="icon icon-category"></i><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/技术/">技术</a><span class="category-list-count">9</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/技术/总结/">总结</a><span class="category-list-count">6</span></li></ul></li></ul></div></div><div class="article-comment" style="max-width:800px"><div class="ds-thread" id="ds-thread" data-thread-key="cj1d6bnqr000fwkrhpwq27xb2" data-title="一个关于字符串的故事" data-url="http://yoursite.com/2017/04/11/一个关于字符串的故事/" site-name="ueibo"></div><script>var siteName = document.getElementById('ds-thread').getAttribute('site-name');
+var duoshuoQuery = {short_name: siteName};
+(function() {
+  var ds = document.createElement('script');
+  ds.type = 'text/javascript';ds.async = true;
+  ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+  ds.charset = 'UTF-8';
+  (document.getElementsByTagName('head')[0] 
+  || document.getElementsByTagName('body')[0]).appendChild(ds);
+})();</script></div><ul class="navication"><li class="home"><a href="/"><i class="icon icon-home"></i></a></li><li><a href="/2017/04/10/解析前端构建工具webpack/"><i class="icon icon-arror-right"></i></a></li></ul><div class="page-footer"><div class="top"><ul class="social"><li><a href="https://github.com/baixiaoji" title="Github" target="_blank"><i class="icon icon-github"></i></a></li><li><a href="https://www.douban.com/people/baixiaoji/" title="douban" target="_blank"><i class="icon icon-douban"></i></a></li></ul></div><div class="bottom"><p class="copyright">© 2017 石沉大海 - baixiaoji的个人博客<br><small>POWER BY <a href="https://hexo.io" target="_blank">HEXO</a></small></p></div></div></div><script>var wrap = document.getElementById('wrap');
+window.onload = function () {
+  wrap.className += ' done';
+}</script></body></html>
