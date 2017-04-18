@@ -1,0 +1,48 @@
+<!DOCTYPE html><html lang="zh-cn"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"><meta name="format-detection" content="telephone=no"><meta name="format-detection" content="email=no"><meta name="description"><meta name="keywords" content="Hexo, 前端, 技术, JavaScript, Nodejs,  Vuejs"><title>模块化 - 石沉大海 - baixiaoji的个人博客</title><link rel="stylesheet" href="/css/main_style.min.css"><link rel="icon" href="/favicon.ico"></head><body><input id="navi" type="checkbox"><ul class="main-navication"><li><a href="/"><span>Home</span></a></li><li><a href="https://github.com/baixiaoji"><span>Github</span></a></li><li><a href="/about/"><span>about</span></a></li></ul><div class="wrapper" id="wrap"><div class="post-header"><label class="navi-button light" for="navi">MENU</label><img class="background" src="http://callfiles.ueibo.com/hexo-theme-laughing/post_background.jpg"><div class="post-title"><h1 class="title">模块化</h1><ul class="meta"><li><i class="icon icon-author"></i>白小霁</li><li><i class="icon icon-clock"></i>5 Minutes</li><li><i class="icon icon-calendar"></i>April 18, 2017</li></ul></div></div><div class="article-content" style="max-width:800px"><h2 id="为什么要使用模块化？"><a href="#为什么要使用模块化？" class="headerlink" title="为什么要使用模块化？"></a>为什么要使用模块化？</h2><p>1.在使用文件使用过程中，如果都写在一个文件当中，有一些变量会提取到全局范围，就会出现<code>命名冲突</code>的问题，使用模块化可以避免此类问题。</p>
+<ol>
+<li>如果一个页面当中引入大量的<code>&lt;script&gt;</code>标签，会影响整个页面的响应速度，并可能发生同时引用组件没有引用完全，所以要使用模块化，解决繁琐的<code>文件依赖</code>问题。</li>
+<li>本着一个模块一个文件的原则，可以<code>提高代码的可读性</code>，并且实现了代码之间的解耦，提高了代码的<code>复用率</code>。</li>
+</ol>
+<h2 id="CMD、AMD、CommonJS-规范分别指什么？有哪些应用"><a href="#CMD、AMD、CommonJS-规范分别指什么？有哪些应用" class="headerlink" title="CMD、AMD、CommonJS 规范分别指什么？有哪些应用"></a>CMD、AMD、CommonJS 规范分别指什么？有哪些应用</h2><h3 id="AMD规范"><a href="#AMD规范" class="headerlink" title="AMD规范"></a>AMD规范</h3><p><code>AMD(Asynchronous Module Definition)异步模块定义</code>指定一种机制，在该机制下模块和依赖可以异步加载。对浏览器端很适用。</p>
+<ol>
+<li>语法<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">define(id?, dependencies?,factory);</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<ul>
+<li>id: 定义模块的名字；</li>
+<li>dependencies(依赖):是当前模块依赖的，已被模块定义的文件名；</li>
+<li>factory(工厂函数):当依赖问价加载完成之后执行的函数</li>
+</ul>
+<p>2.应用<br><code>RequireJS</code>、<code>curl</code>、<code>Dojo</code>等框架是按照AMD规范实现模块化的设置。</p>
+<ol>
+<li>一些配置参数<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">require.config(&#123;</div><div class="line">   baseUrl: &apos;js/lib&apos;, //设定根目录在哪里</div><div class="line">    path:&#123;            // 指定各个模块的加载路径</div><div class="line">     &apos;jquery&apos;: &apos;jquery.min&apos;</div><div class="line">    &#125;,</div><div class="line">    shim:&#123;  // 配置不兼容的模块</div><div class="line">        &apos;jquery.scroll&apos;:&#123;</div><div class="line">            deps : [&apos;jquery&apos;],   //该模块的依赖</div><div class="line">            exports: &apos;jQuery.fn.scroll&apos;   // 设置输出的变量名</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="CommonJS规范"><a href="#CommonJS规范" class="headerlink" title="CommonJS规范"></a>CommonJS规范</h3><p><code>CommonJS</code>是一种服务器端模块的规范。node.js也是这种规范。</p>
+<ol>
+<li>语法<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">require(deps) // 需要依赖的时候加载依赖</div><div class="line">exports.xx = function()&#123;&#125; // 作为唯一的输出表示</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="CMD规范"><a href="#CMD规范" class="headerlink" title="CMD规范"></a>CMD规范</h3><p><code>CMD（Common Module Definition）</code>是 SeaJS推广过程中产生的。</p>
+<ol>
+<li><p>语法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">define(factory)</div></pre></td></tr></table></figure>
+</li>
+<li><p>案例</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">// math.js </div><div class="line">define(function(requires, exports, module) &#123;</div><div class="line">  exports.add = function(x, y) &#123;</div><div class="line">    return x + y;</div><div class="line">  &#125;;</div><div class="line">&#125;);</div><div class="line">// inc.js</div><div class="line">define(function(requires, exports, module) &#123;</div><div class="line">  var add = require(&apos;math&apos;).add;</div><div class="line">  exports.inc = function(val) &#123;</div><div class="line">    return add(val, 1);</div><div class="line">  &#125;;</div><div class="line">&#125;);</div><div class="line">// program.js</div><div class="line">define(function(require, exports, module) &#123;</div><div class="line">  var inc = require(&apos;inc&apos;).inc;</div><div class="line">  var a = 1;</div><div class="line">  inc(a); // 2</div><div class="line"></div><div class="line">  module.id = &quot;program&quot;;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="UMD"><a href="#UMD" class="headerlink" title="UMD"></a>UMD</h3><p><a href="https://github.com/umdjs/umd" target="_blank" rel="external">Universal Module Definition</a> 规范类似于兼容 CommonJS 和 AMD 的语法糖，是模块定义的跨平台解决方案。</p>
+</div><div class="article-meta" style="max-width:800px"><div class="tags"><i class="icon icon-tag"></i><ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/模块化/">模块化</a><span class="tag-list-count">1</span></li></ul></div><div class="categories"><i class="icon icon-category"></i><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/技术/">技术</a><span class="category-list-count">10</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/技术/总结/">总结</a><span class="category-list-count">7</span></li></ul></li></ul></div></div><div class="article-comment" style="max-width:800px"><div class="ds-thread" id="ds-thread" data-thread-key="cj1njsdx8000rgsrh0cgdnw7n" data-title="模块化" data-url="http://yoursite.com/2017/04/18/模块化/" site-name="ueibo"></div><script>var siteName = document.getElementById('ds-thread').getAttribute('site-name');
+var duoshuoQuery = {short_name: siteName};
+(function() {
+  var ds = document.createElement('script');
+  ds.type = 'text/javascript';ds.async = true;
+  ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+  ds.charset = 'UTF-8';
+  (document.getElementsByTagName('head')[0] 
+  || document.getElementsByTagName('body')[0]).appendChild(ds);
+})();</script></div><ul class="navication"><li class="home"><a href="/"><i class="icon icon-home"></i></a></li><li><a href="/2017/04/11/一个关于字符串的故事/"><i class="icon icon-arror-right"></i></a></li></ul><div class="page-footer"><div class="top"><ul class="social"><li><a href="https://github.com/baixiaoji" title="Github" target="_blank"><i class="icon icon-github"></i></a></li><li><a href="https://www.douban.com/people/baixiaoji/" title="douban" target="_blank"><i class="icon icon-douban"></i></a></li></ul></div><div class="bottom"><p class="copyright">© 2017 石沉大海 - baixiaoji的个人博客<br><small>POWER BY <a href="https://hexo.io" target="_blank">HEXO</a></small></p></div></div></div><script>var wrap = document.getElementById('wrap');
+window.onload = function () {
+  wrap.className += ' done';
+}</script></body></html>
