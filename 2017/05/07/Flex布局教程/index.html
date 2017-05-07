@@ -1,4 +1,38 @@
-<!DOCTYPE html><html lang="zh-cn"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"><meta name="format-detection" content="telephone=no"><meta name="format-detection" content="email=no"><meta name="description"><meta name="keywords" content="Hexo, 前端, 技术, JavaScript, Nodejs,  Vuejs"><title>Flex布局教程 - 石沉大海 - baixiaoji的个人博客</title><link rel="stylesheet" href="/css/main_style.min.css"><link rel="icon" href="/favicon.ico"></head><body><input id="navi" type="checkbox"><ul class="main-navication"><li><a href="/"><span>Home</span></a></li><li><a href="https://github.com/baixiaoji"><span>Github</span></a></li><li><a href="/about/"><span>about</span></a></li></ul><div class="wrapper" id="wrap"><div class="post-header"><label class="navi-button light" for="navi">MENU</label><img class="background" src="http://callfiles.ueibo.com/hexo-theme-laughing/post_background.jpg"><div class="post-title"><h1 class="title">Flex布局教程</h1><ul class="meta"><li><i class="icon icon-author"></i>白小霁</li><li><i class="icon icon-clock"></i>0 Minutes</li><li><i class="icon icon-calendar"></i>May 7, 2017</li></ul></div></div><div class="article-content" style="max-width:800px"></div><div class="article-meta" style="max-width:800px"></div><div class="article-comment" style="max-width:800px"><div class="ds-thread" id="ds-thread" data-thread-key="cj2etysjj0002dcrhxsb950ju" data-title="Flex布局教程" data-url="http://yoursite.com/2017/05/07/Flex布局教程/" site-name="ueibo"></div><script>var siteName = document.getElementById('ds-thread').getAttribute('site-name');
+<!DOCTYPE html><html lang="zh-cn"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"><meta name="format-detection" content="telephone=no"><meta name="format-detection" content="email=no"><meta name="description"><meta name="keywords" content="Hexo, 前端, 技术, JavaScript, Nodejs,  Vuejs"><title>Flex布局教程 - 石沉大海 - baixiaoji的个人博客</title><link rel="stylesheet" href="/css/main_style.min.css"><link rel="icon" href="/favicon.ico"></head><body><input id="navi" type="checkbox"><ul class="main-navication"><li><a href="/"><span>Home</span></a></li><li><a href="https://github.com/baixiaoji"><span>Github</span></a></li><li><a href="/about/"><span>about</span></a></li></ul><div class="wrapper" id="wrap"><div class="post-header"><label class="navi-button light" for="navi">MENU</label><img class="background" src="http://callfiles.ueibo.com/hexo-theme-laughing/post_background.jpg"><div class="post-title"><h1 class="title">Flex布局教程</h1><ul class="meta"><li><i class="icon icon-author"></i>白小霁</li><li><i class="icon icon-clock"></i>3 Minutes</li><li><i class="icon icon-calendar"></i>May 7, 2017</li></ul></div></div><div class="article-content" style="max-width:800px"><p><img src="./Flex.png" alt=""></p>
+<h2 id="核心点："><a href="#核心点：" class="headerlink" title="核心点："></a>核心点：</h2><p>container 、item 、 main/cross axis 、 main/cross start 、main/cross end 、 main size 、cross size</p>
+<p><img src="https://cask.scotch.io/2015/04/CSS3-Flexbox-Model.jpg" alt=""></p>
+<h2 id="container-（容器）-属性"><a href="#container-（容器）-属性" class="headerlink" title="container （容器） 属性"></a>container （容器） 属性</h2><ol>
+<li><a href="http://js.jirengu.com/ferub/8/edit" target="_blank" rel="external">flex-direction</a></li>
+<li><a href="http://js.jirengu.com/ferub/11/edit" target="_blank" rel="external">flex-wrap</a></li>
+<li>flex-flow 是direction 和wrap的简写</li>
+<li><a href="http://js.jirengu.com/ferub/14/edit" target="_blank" rel="external">justify-content</a></li>
+<li><a href="http://js.jirengu.com/ferub/16/edit?css,output" target="_blank" rel="external">align-items</a></li>
+<li><a href="http://js.jirengu.com/ferub/17/edit?css,output" target="_blank" rel="external">align-content</a>(用的教少)</li>
+</ol>
+<h2 id="item（项目）属性"><a href="#item（项目）属性" class="headerlink" title="item（项目）属性"></a>item（项目）属性</h2><ol>
+<li><a href="http://js.jirengu.com/ferub/19/edit" target="_blank" rel="external">order</a></li>
+<li><a href="http://js.jirengu.com/ferub/20/edit" target="_blank" rel="external">flex-grow</a>分剩余空间（如果有的话）</li>
+<li><a href="http://js.jirengu.com/ferub/22/edit" target="_blank" rel="external">flex-shrink</a>定义了项目的缩小比例    <strong>item-width &gt; container-width</strong></li>
+<li><a href="http://js.jirengu.com/ferub/23/edit" target="_blank" rel="external">flex-basis</a> 跟设置<code>width</code>或<code>height</code>一样效果</li>
+<li>flex 是 <code>flex-grow</code> 、 <code>flex-shrink</code> 、 <code>flex-basis</code>的简写 </li>
+<li><a href="http://js.jirengu.com/ferub/24/edit" target="_blank" rel="external">align-self</a>允许单个项目有与其他项目不一样的对齐方式</li>
+</ol>
+<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><ol>
+<li><a href="http://js.jirengu.com/lesab/6/edit" target="_blank" rel="external">手机布局 topbar + main+ tabs</a></li>
+<li><a href="http://js.jirengu.com/poza/2/edit" target="_blank" rel="external">产品列表</a></li>
+<li>PC页面布局</li>
+<li><a href="http://js.jirengu.com/reka/4/edit" target="_blank" rel="external">完美居中</a></li>
+</ol>
+<h2 id="参考资料："><a href="#参考资料：" class="headerlink" title="参考资料："></a>参考资料：</h2><ol>
+<li><a href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html" target="_blank" rel="external">http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html</a></li>
+<li><a href="https://scotch.io/tutorials/a-visual-guide-to-css3-flexbox-properties" target="_blank" rel="external">https://scotch.io/tutorials/a-visual-guide-to-css3-flexbox-properties</a></li>
+<li><a href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/" target="_blank" rel="external">https://css-tricks.com/snippets/css/a-guide-to-flexbox/</a></li>
+<li><a href="http://www.css88.com/archives/7212" target="_blank" rel="external">http://www.css88.com/archives/7212</a></li>
+<li><a href="http://www.css88.com/archives/5744" target="_blank" rel="external">http://www.css88.com/archives/5744</a></li>
+<li><a href="https://csspod.com/a-guide-to-flexbox/" target="_blank" rel="external">https://csspod.com/a-guide-to-flexbox/</a></li>
+<li><a href="http://zhoon.github.io/css3/2014/08/23/flex.html" target="_blank" rel="external">http://zhoon.github.io/css3/2014/08/23/flex.html</a> </li>
+</ol>
+</div><div class="article-meta" style="max-width:800px"><div class="tags"><i class="icon icon-tag"></i><ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/">CSS</a><span class="tag-list-count">1</span></li></ul></div><div class="categories"><i class="icon icon-category"></i><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/技术/">技术</a><span class="category-list-count">16</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/技术/总结/">总结</a><span class="category-list-count">13</span></li></ul></li></ul></div></div><div class="article-comment" style="max-width:800px"><div class="ds-thread" id="ds-thread" data-thread-key="cj2eujpw9000210rhnmv6ts12" data-title="Flex布局教程" data-url="http://yoursite.com/2017/05/07/Flex布局教程/" site-name="ueibo"></div><script>var siteName = document.getElementById('ds-thread').getAttribute('site-name');
 var duoshuoQuery = {short_name: siteName};
 (function() {
   var ds = document.createElement('script');
