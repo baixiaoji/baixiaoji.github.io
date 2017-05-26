@@ -1,0 +1,58 @@
+<!DOCTYPE html><html lang="zh-cn"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"><meta name="format-detection" content="telephone=no"><meta name="format-detection" content="email=no"><meta name="description"><meta name="keywords" content="Hexo, 前端, 技术, JavaScript, Nodejs,  Vuejs"><title>正则，你这个磨人的小妖精 - 石沉大海 - baixiaoji的个人博客</title><link rel="stylesheet" href="/css/main_style.min.css"><link rel="icon" href="/favicon.ico"></head><body><input id="navi" type="checkbox"><ul class="main-navication"><li><a href="/"><span>Home</span></a></li><li><a href="https://github.com/baixiaoji"><span>Github</span></a></li><li><a href="/about/"><span>about</span></a></li></ul><div class="wrapper" id="wrap"><div class="post-header"><label class="navi-button light" for="navi">MENU</label><img class="background" src="http://callfiles.ueibo.com/hexo-theme-laughing/post_background.jpg"><div class="post-title"><h1 class="title">正则，你这个磨人的小妖精</h1><ul class="meta"><li><i class="icon icon-author"></i>白小霁</li><li><i class="icon icon-clock"></i>3 Minutes</li><li><i class="icon icon-calendar"></i>May 25, 2017</li></ul></div></div><div class="article-content" style="max-width:800px"><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>正则这个东西，对于任何程序员掌握了只有好处没有坏处的。刚刚好昨天再写报告的时候，要去网页上复制自己的问卷，结果刚刚好使用正则替换的方式，将整个格式修改好了，那一刻再次体验到编程的好感，总之学习正则的难度不大，够自己用就好了，缺点是如果长时间不用的话，几乎忘记的一干二净。建议就是设计到文字的替换什么的就逼自己使用正则。下面是正则的介绍和知识点。<br>注：因为正则表达式太长了，下面都是缩写为正则。</p>
+<h2 id="正则的作用"><a href="#正则的作用" class="headerlink" title="正则的作用"></a>正则的作用</h2><p>在我们上网的过程中，会去经常查找某些符合复杂规则的字符串，如想把中国所有座机号都匹配上了。这种时候正则就派上用场了。<br>而正则的作用就是：</p>
+<ul>
+<li>检测字符串是否符合某种规则</li>
+<li>替换字符串</li>
+</ul>
+<h2 id="入门"><a href="#入门" class="headerlink" title="入门"></a>入门</h2><p>我们先来一个小热身，当你想去匹配hi这个单词的时候，你可以使用<code>hi</code>这样的方式去查找，那你有话说了这不就是我们普通的查找方式吗！就是最简单的正则了。而正则通常是忽略大小写的，所以这个正则很可以匹配到<strong>hi、HI、Hi、hL</strong>这几种情况。<br>因为上诉的正则还会匹配到单词中出现的hi的字符，比如him、high等。这时我们又有一个需求了，我们不想匹配到这些字符，我们仅仅是想匹配到hi这个字符。那我们应该使用<code>\bhi\b</code>。<br><code>\b</code>是就是一个<strong>元字符</strong>（metacharacter），说白了就是一个特殊字符，是单词<code>boundary</code>的缩写（这个只是为了让你好记点），代表着单词的开头或结尾，就是单词的分界处。虽然通常英文的单词是由空格，标点符号或者换行来分隔的，但是<code>\b</code>并不匹配这些单词分隔字符中的任何一个，<strong>它只匹配一个位置</strong>。</p>
+<h2 id="元字符（自学部分）"><a href="#元字符（自学部分）" class="headerlink" title="元字符（自学部分）"></a>元字符（自学部分）</h2><ol>
+<li>表示位置的<ul>
+<li><code>\b</code> 匹配单词的开始或结束</li>
+<li><code>^</code> 匹配字符串的开始</li>
+<li><code>$</code> 匹配字符串的结尾</li>
+</ul>
+</li>
+<li>字符匹配<ul>
+<li><code>.</code> 匹配除了换行符以外的任意单个字符</li>
+<li><code>\w</code> 匹配字母或数字或下划线或汉字</li>
+<li><code>\d</code> 匹配数字（0-9）</li>
+<li><code>\s</code> 匹配任意空白符（任意的空白符，包括空格，制表符(Tab)，换行符，中文全角空格等）</li>
+</ul>
+</li>
+<li>限定符（限定重复次数）<ul>
+<li><code>*</code> 重复零次或更多次（0+）</li>
+<li><code>?</code> 重复零次或一次（0，1）</li>
+<li><code>+</code> 重复一次或更多次（1+）</li>
+<li><code>{num}</code> 重复num次</li>
+<li><code>{n,m}</code> 重复n到m次</li>
+<li><code>{n,}</code> 重复n次或更多次</li>
+</ul>
+</li>
+<li>反义<ul>
+<li><code>\W</code> 匹配任意不是字母，数字，下划线，汉字的字符</li>
+<li><code>\S</code> 匹配任意不是空白符的字符</li>
+<li><code>\D</code> 匹配任意非数字的字符</li>
+<li><code>\B</code> 匹配不是单词开头或结束的位置</li>
+<li><code>[^x]</code> 匹配除了x以外的任意字符</li>
+</ul>
+</li>
+</ol>
+<h2 id="字符组合"><a href="#字符组合" class="headerlink" title="字符组合"></a>字符组合</h2><p>如果你想匹配一些自定义的字符集，你便要使用<code>[]</code>来划定你想匹配的东西，如：想匹配元音字母a,e,i,o,u，便可以<code>[aeiuo]</code>这样使用，就是匹配任何一个出现在中括号里面的任意字符。要没有发现这个和我们中学学到的<strong>区间</strong>很像，其实就是表示一个范围，就像<code>[0-9]</code>代表的就是<code>\d</code>的意思。</p>
+<h2 id="转义"><a href="#转义" class="headerlink" title="转义"></a>转义</h2><p>如果我就想匹配.了，因为在正则中给这个字符定义了特殊的含义，所以你要使用的时候也能简单做一次转移就好了，使用符号<code>\</code>。如匹配一个点<code>[\.]</code> </p>
+<h2 id="其他需要反复琢磨的东西"><a href="#其他需要反复琢磨的东西" class="headerlink" title="其他需要反复琢磨的东西"></a>其他需要反复琢磨的东西</h2><p>如果你想要出现两种情况，在逻辑上有一层或的关系，你就可以使用<code>|</code>符号，但请记住该符号的两次是两个完整的正则。</p>
+<p>如果你想在后面引用前面匹配到一样的东西，你需要对前面的东西先要进行一次分组，使用<code>()</code>这个符号，后面地方使用<code>\num</code>，这里的num就是第几个分组，当然分组看的小括号是正则表达式从左到右，最左的就是第一个分组。</p>
+<p>说到贪婪和懒惰的情况，正则匹配默认就是贪婪匹配，要是得懒惰的匹配在你想要匹配地方尽可能少的出现的地方加一个<code>?</code>便可。</p>
+<h2 id="参考博客"><a href="#参考博客" class="headerlink" title="参考博客"></a>参考博客</h2><p><a href="https://deerchao.net/tutorials/regex/regex.htm" target="_blank" rel="external">30分钟学会正则表达式</a></p>
+</div><div class="article-meta" style="max-width:800px"><div class="tags"><i class="icon icon-tag"></i><ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/正则/">正则</a><span class="tag-list-count">1</span></li></ul></div><div class="categories"><i class="icon icon-category"></i><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/技术/">技术</a><span class="category-list-count">18</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/技术/总结/">总结</a><span class="category-list-count">15</span></li></ul></li></ul></div></div><div class="article-comment" style="max-width:800px"><div class="ds-thread" id="ds-thread" data-thread-key="cj353wl85001igkrheuvx0tsx" data-title="正则，你这个磨人的小妖精" data-url="http://yoursite.com/2017/05/25/正则，你这个磨人的小妖精/" site-name="ueibo"></div><script>var siteName = document.getElementById('ds-thread').getAttribute('site-name');
+var duoshuoQuery = {short_name: siteName};
+(function() {
+  var ds = document.createElement('script');
+  ds.type = 'text/javascript';ds.async = true;
+  ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+  ds.charset = 'UTF-8';
+  (document.getElementsByTagName('head')[0] 
+  || document.getElementsByTagName('body')[0]).appendChild(ds);
+})();</script></div><ul class="navication"><li class="home"><a href="/"><i class="icon icon-home"></i></a></li><li><a href="/2017/05/20/Vue学习系列（基础篇）/"><i class="icon icon-arror-right"></i></a></li></ul><div class="page-footer"><div class="top"><ul class="social"><li><a href="https://github.com/baixiaoji" title="Github" target="_blank"><i class="icon icon-github"></i></a></li><li><a href="https://www.douban.com/people/baixiaoji/" title="douban" target="_blank"><i class="icon icon-douban"></i></a></li></ul></div><div class="bottom"><p class="copyright">© 2017 石沉大海 - baixiaoji的个人博客<br><small>POWER BY <a href="https://hexo.io" target="_blank">HEXO</a></small></p></div></div></div><script>var wrap = document.getElementById('wrap');
+window.onload = function () {
+  wrap.className += ' done';
+}</script></body></html>
