@@ -1,0 +1,59 @@
+<!DOCTYPE html><html lang="zh-cn"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"><meta name="format-detection" content="telephone=no"><meta name="format-detection" content="email=no"><meta name="description"><meta name="keywords" content="Hexo, 前端, 技术, JavaScript, Nodejs,  Vuejs"><title>关于CSS的面试题（一） - 石沉大海 - baixiaoji的个人博客</title><link rel="stylesheet" href="/css/main_style.min.css"><link rel="icon" href="/favicon.ico"></head><body><input id="navi" type="checkbox"><ul class="main-navication"><li><a href="/"><span>Home</span></a></li><li><a href="https://github.com/baixiaoji"><span>Github</span></a></li><li><a href="/about/"><span>about</span></a></li></ul><div class="wrapper" id="wrap"><div class="post-header"><label class="navi-button light" for="navi">MENU</label><img class="background" src="http://callfiles.ueibo.com/hexo-theme-laughing/post_background.jpg"><div class="post-title"><h1 class="title">关于CSS的面试题（一）</h1><ul class="meta"><li><i class="icon icon-author"></i>白小霁</li><li><i class="icon icon-clock"></i>3 Minutes</li><li><i class="icon icon-calendar"></i>June 14, 2017</li></ul></div></div><div class="article-content" style="max-width:800px"><h3 id="标准盒模型-VS-IE盒模型"><a href="#标准盒模型-VS-IE盒模型" class="headerlink" title="标准盒模型 VS  IE盒模型"></a>标准盒模型 VS  IE盒模型</h3><p><img src="http://images.cnblogs.com/cnblogs_com/cchyao/%E6%A0%87%E5%87%86W3C%E7%9B%92%E5%AD%90%E6%A8%A1%E5%9E%8B%E5%92%8CIE%E7%9B%92%E5%AD%90%E6%A8%A1%E5%9E%8BCSS%E5%B8%83%E5%B1%80%E7%BB%8F%E5%85%B8%E7%9B%92%E5%AD%90%E6%A8%A1%E5%9E%8B/1.JPG" width="600"></p>
+<blockquote>
+<p>别人是这样讲的：标准的盒子模型的范围包括margin、border、padding、content，并且content部分不包括其他部分。</p>
+</blockquote>
+<p>可能久了并不是很清楚这些东西，但是要记住<strong>盒子总宽度/高度 = width/height + padding +border + margin</strong></p>
+<p><img src="http://images.cnblogs.com/cnblogs_com/cchyao/%E6%A0%87%E5%87%86W3C%E7%9B%92%E5%AD%90%E6%A8%A1%E5%9E%8B%E5%92%8CIE%E7%9B%92%E5%AD%90%E6%A8%A1%E5%9E%8BCSS%E5%B8%83%E5%B1%80%E7%BB%8F%E5%85%B8%E7%9B%92%E5%AD%90%E6%A8%A1%E5%9E%8B/2.JPG" width="600"></p>
+<blockquote>
+<p> 上图可以看出，ie的盒模型其实也有包括margin、border、padding、content，但是和标准的盒模型不同的是：ie盒模型的<strong>content包含了border和padding</strong>。</p>
+</blockquote>
+<p>这时候<strong>盒子总宽度/高度= width/height + margin  = content.width /height + padding + border + margin</strong></p>
+<p>这个时候就要讲讲CSS3的<code>box-sizing</code>属性了。</p>
+<p>该属性的默认值就是<code>content-box</code>，就是标准的盒模型。width和height只包括内容的宽高。</p>
+<p>还有个值为<code>border-box</code>，其实就是IE的盒模型标准，其中width和height包括内容、内边距、边框，不包含外边距。</p>
+<h3 id="position值的区别"><a href="#position值的区别" class="headerlink" title="position值的区别"></a>position值的区别</h3><ol>
+<li>static 默认的值，就是普通的文档流的布局位置。<strong>此时的top、right、bottom、left和z-index属性无效</strong>。</li>
+<li>relative，在文档流中<strong>保留原来的位置</strong>，定位的方式根据<strong>自身原始</strong>的位置开始定位，不影响文档流的情况。</li>
+<li>absolute，不为元素预留空间，通过指定元素相对于<strong>最近</strong>的<strong>非static定位祖先元素</strong>（极为设置了relative、fixed、absolute的元素）的偏移，从而确定元素位置。<strong>设置过后，是后面的文档挡住了设置该值的元素</strong>。</li>
+<li>fixed，脱离整个文档流，根据<strong>浏览器的窗口</strong>定位元素，而是<strong>固定元素</strong>的效果。</li>
+<li>sticky，CSS3新属性，表现类似<strong>position:relative和position:fixed</strong>的合体，在目标区域在屏幕中可见时，它的行为就像position:relative;而当页面滚动超出目标区域时，它的表现就像position:fixed，它会固定在目标位置！</li>
+</ol>
+<h3 id="z-index的问题"><a href="#z-index的问题" class="headerlink" title="z-index的问题"></a>z-index的问题</h3><ol>
+<li><p>z-index 在什么情况下才生效？</p>
+<p>z-index要在设置非static的定位元素上才起作用。</p>
+</li>
+<li><p>z-index值越大元素越靠前，对吗？ z-index 在设置元素覆盖时到底有什么规律?</p>
+<blockquote>
+<ol>
+<li>当Z-index的值设置为auto时,不建立新的堆叠上下文,当前堆叠上下文中生成的div的堆叠级别与其父项的框相同。</li>
+<li>当Z-index的值设置为一个整数时,该整数是当前堆叠上下文中生成的div的堆栈级别。该框还建立了其堆栈级别的本地堆叠上下文。这意味着后代的z-index不与此元素之外的元素的z-index进行比较。</li>
+</ol>
+<p>ps: 通俗讲就是,当一个div的Z-index为整数时,它的子元素和外界元素进行比较时,采用父元素的Z-index进行比较, 和兄弟元素比较采用自身的Z-index。当一个div的Z-index为auto时,如果它和它的兄弟进行比较,采用它父元素的Z-index。</p>
+<p>——<a href="https://zhuanlan.zhihu.com/p/26866325" target="_blank" rel="external">搞懂Z-index的所有细节</a></p>
+<p>​</p>
+</blockquote>
+</li>
+<li><p>z-index 不设置和设置为0有什么区别?</p>
+<blockquote>
+<p>如果不设置Z-index那么默认值为auto,则不建立层叠上下文。设置为0则会脱离文档流,建立层叠上下文。</p>
+<p>——<a href="https://zhuanlan.zhihu.com/p/26866325" target="_blank" rel="external">搞懂Z-index的所有细节</a></p>
+</blockquote>
+<p><img src="https://pic2.zhimg.com/v2-139942660dceedc936cfb71a6fe948fd_b.png"></p>
+</li>
+<li><p>z-index 可以为负值吗?</p>
+<p>可以，但是堆砌方式还是依据问题2的方式，如果父级是static则是在最下面，如果父元素是非static的定位元素，设置负值的元素不会落在整个文档的最下面而是父元素这块区域的最下面。这是一个可以玩z-index的地方，<a href="http://www.cssmojo.com/extras/everything_you_always_wanted_to_know_about_z-index_but_were_afraid_to_ask/" target="_blank" rel="external">点我</a>。</p>
+</li>
+</ol>
+</div><div class="article-meta" style="max-width:800px"><div class="tags"><i class="icon icon-tag"></i><ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/">CSS</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/面试/">面试</a><span class="tag-list-count">2</span></li></ul></div><div class="categories"><i class="icon icon-category"></i><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/技术/">技术</a><span class="category-list-count">23</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/技术/总结/">总结</a><span class="category-list-count">20</span></li></ul></li></ul></div></div><div class="article-comment" style="max-width:800px"><div class="ds-thread" id="ds-thread" data-thread-key="cj3x2t1qp000zdkrhj9j014eb" data-title="关于CSS的面试题（一）" data-url="http://yoursite.com/2017/06/14/关于CSS的面试题（一）/" site-name="ueibo"></div><script>var siteName = document.getElementById('ds-thread').getAttribute('site-name');
+var duoshuoQuery = {short_name: siteName};
+(function() {
+  var ds = document.createElement('script');
+  ds.type = 'text/javascript';ds.async = true;
+  ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+  ds.charset = 'UTF-8';
+  (document.getElementsByTagName('head')[0] 
+  || document.getElementsByTagName('body')[0]).appendChild(ds);
+})();</script></div><ul class="navication"><li class="home"><a href="/"><i class="icon icon-home"></i></a></li><li><a href="/2017/06/13/React-createClass-versus-extends-React-Component（译）/"><i class="icon icon-arror-right"></i></a></li></ul><div class="page-footer"><div class="top"><ul class="social"><li><a href="https://github.com/baixiaoji" title="Github" target="_blank"><i class="icon icon-github"></i></a></li><li><a href="https://www.douban.com/people/baixiaoji/" title="douban" target="_blank"><i class="icon icon-douban"></i></a></li></ul></div><div class="bottom"><p class="copyright">© 2017 石沉大海 - baixiaoji的个人博客<br><small>POWER BY <a href="https://hexo.io" target="_blank">HEXO</a></small></p></div></div></div><script>var wrap = document.getElementById('wrap');
+window.onload = function () {
+  wrap.className += ' done';
+}</script></body></html>
